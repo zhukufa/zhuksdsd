@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "454709189387",
+    "firebase_url": "https://zhuk-f6b4f-default-rtdb.firebaseio.com",
+    "project_id": "zhuk-f6b4f",
+    "storage_bucket": "zhuk-f6b4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454709189387:android:8600acc61ba34a7f48e00e",
+        "android_client_info": {
+          "package_name": "com.company.zhuk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgeqF8R06NrQTrNN7CQAtOZwCT_7E8vbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454709189387:android:d435a86c929d5eee48e00e",
+        "android_client_info": {
+          "package_name": "com.example.zhuk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgeqF8R06NrQTrNN7CQAtOZwCT_7E8vbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
