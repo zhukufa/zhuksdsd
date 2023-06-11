@@ -18,6 +18,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Collections;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText ed_email, ed_pass;
@@ -67,8 +70,11 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
                         showSigned();
                         sendEmailVer();
+                        String uploadEmail = ed_email.getText().toString();
+                        uploadUser(user, uploadEmail);
                         Toast.makeText(getApplicationContext(), "Регистрация успешно выполнена!", Toast.LENGTH_SHORT).show();
                     } else {
                         notSigned();
@@ -81,6 +87,31 @@ public class LoginActivity extends AppCompatActivity {
         else {
             Toast.makeText(getApplicationContext(), "Введите логин и пароль!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void uploadUser(FirebaseUser user, String uploadEmail){
+
+        User newUser = new User();
+
+        newUser.setId(user.getUid());
+        newUser.setEmail(uploadEmail);
+
+        FirebaseFirestore.getInstance().collection("Users").document(user.getUid())
+                .set(newUser)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(LoginActivity.this, user.getUid(),
+                                    Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Ошибка - " + task.getException().getMessage(),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     public void signin(View view) {

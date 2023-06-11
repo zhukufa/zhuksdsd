@@ -1,17 +1,51 @@
 package com.example.zhuk;
 
+import java.util.List;
+
 public class User {
-    public String id, name, sec_name, email, price;
+    private String id;
+    private String email;
+    private String avtrurl;
+    private List<String> cart;
 
     public User() {
     }
 
-    public User(String id, String name, String sec_name, String email) {
+    public User(String id, String email, String avtrurl, List<String> cart) {
         this.id = id;
-        this.name = name;
-        this.sec_name = sec_name;
-       this.email = email;
-        this.price = price;
+        this.email = email;
+        this.avtrurl = avtrurl;
+        this.cart = cart;
+    }
 
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getAvtrurl() {
+        return avtrurl;
+    }
+
+    public void setAvtrurl(String avtrurl) {
+        this.avtrurl = avtrurl;
+    }
+
+    public List<String> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<String> cart) {
+        this.cart = cart;
     }
 }
